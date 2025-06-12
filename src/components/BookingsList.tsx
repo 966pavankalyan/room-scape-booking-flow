@@ -18,7 +18,7 @@ const BookingsList = () => {
       attendees: 8,
       purpose: "Product Strategy Meeting",
       status: "confirmed",
-      color: "from-blue-500 to-purple-600"
+      color: "from-spotify-green to-spotify-green-dark"
     },
     {
       id: 2,
@@ -31,7 +31,7 @@ const BookingsList = () => {
       attendees: 6,
       purpose: "Design Review Session",
       status: "confirmed",
-      color: "from-green-500 to-teal-600"
+      color: "from-spotify-green to-spotify-green-dark"
     },
     {
       id: 3,
@@ -44,7 +44,7 @@ const BookingsList = () => {
       attendees: 4,
       purpose: "Client Presentation",
       status: "pending",
-      color: "from-orange-500 to-red-600"
+      color: "from-spotify-green-dark to-spotify-green"
     },
     {
       id: 4,
@@ -57,7 +57,7 @@ const BookingsList = () => {
       attendees: 3,
       purpose: "Team Planning Session",
       status: "confirmed",
-      color: "from-pink-500 to-purple-600"
+      color: "from-spotify-green to-spotify-green-dark"
     },
     {
       id: 5,
@@ -70,12 +70,12 @@ const BookingsList = () => {
       attendees: 10,
       purpose: "All-Hands Meeting",
       status: "confirmed",
-      color: "from-blue-500 to-purple-600"
+      color: "from-spotify-green to-spotify-green-dark"
     }
   ];
 
   const getStatusColor = (status) => {
-    return status === "confirmed" ? "bg-green-500/80" : "bg-yellow-500/80";
+    return status === "confirmed" ? "bg-spotify-green/80" : "bg-yellow-500/80";
   };
 
   return (
@@ -86,11 +86,11 @@ const BookingsList = () => {
         className="flex items-center justify-between"
       >
         <div>
-          <h2 className="text-3xl font-bold text-white mb-2">All Bookings</h2>
-          <p className="text-slate-300">Complete overview of meeting room reservations</p>
+          <h2 className="text-3xl font-bold text-foreground mb-2">All Bookings</h2>
+          <p className="text-muted-foreground">Complete overview of meeting room reservations</p>
         </div>
         <div className="flex gap-2">
-          <Badge className="bg-green-500/80 text-white">
+          <Badge className="bg-spotify-green/80 text-white">
             {bookings.filter(b => b.status === "confirmed").length} Confirmed
           </Badge>
           <Badge className="bg-yellow-500/80 text-white">
@@ -112,11 +112,11 @@ const BookingsList = () => {
               transition: { duration: 0.2 }
             }}
           >
-            <Card className="bg-gradient-to-br from-white/10 to-white/5 border-white/20 backdrop-blur-lg hover:from-white/15 hover:to-white/10 transition-all duration-300 group overflow-hidden">
+            <Card className="bg-card/80 border-border backdrop-blur-lg hover:bg-card/90 transition-all duration-300 group overflow-hidden">
               {/* Animated Background */}
               <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${booking.color}`}>
                 <motion.div
-                  className="h-full bg-white/30"
+                  className="h-full bg-spotify-green/30"
                   initial={{ width: "0%" }}
                   animate={{ width: "100%" }}
                   transition={{ delay: index * 0.1 + 0.5, duration: 1 }}
@@ -134,8 +134,8 @@ const BookingsList = () => {
                       {booking.roomName.charAt(0)}
                     </motion.div>
                     <div>
-                      <h3 className="text-xl font-bold text-white">{booking.roomName}</h3>
-                      <p className="text-slate-300 text-sm">{booking.purpose}</p>
+                      <h3 className="text-xl font-bold text-foreground">{booking.roomName}</h3>
+                      <p className="text-muted-foreground text-sm">{booking.purpose}</p>
                     </div>
                   </div>
                   <Badge className={`${getStatusColor(booking.status)} text-white`}>
@@ -146,68 +146,68 @@ const BookingsList = () => {
                 {/* Booking Details Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-4">
                   <motion.div
-                    className="flex items-center gap-2 text-slate-300"
-                    whileHover={{ scale: 1.05, color: "#ffffff" }}
+                    className="flex items-center gap-2 text-muted-foreground"
+                    whileHover={{ scale: 1.05, color: "hsl(var(--foreground))" }}
                   >
-                    <User className="w-4 h-4 text-blue-400" />
+                    <User className="w-4 h-4 text-spotify-green" />
                     <div>
-                      <p className="text-xs text-slate-400">Organizer</p>
+                      <p className="text-xs text-muted-foreground">Organizer</p>
                       <p className="text-sm font-medium">{booking.organizer}</p>
                     </div>
                   </motion.div>
 
                   <motion.div
-                    className="flex items-center gap-2 text-slate-300"
-                    whileHover={{ scale: 1.05, color: "#ffffff" }}
+                    className="flex items-center gap-2 text-muted-foreground"
+                    whileHover={{ scale: 1.05, color: "hsl(var(--foreground))" }}
                   >
-                    <Calendar className="w-4 h-4 text-green-400" />
+                    <Calendar className="w-4 h-4 text-spotify-green" />
                     <div>
-                      <p className="text-xs text-slate-400">Date</p>
+                      <p className="text-xs text-muted-foreground">Date</p>
                       <p className="text-sm font-medium">{booking.date}</p>
                     </div>
                   </motion.div>
 
                   <motion.div
-                    className="flex items-center gap-2 text-slate-300"
-                    whileHover={{ scale: 1.05, color: "#ffffff" }}
+                    className="flex items-center gap-2 text-muted-foreground"
+                    whileHover={{ scale: 1.05, color: "hsl(var(--foreground))" }}
                   >
-                    <Clock className="w-4 h-4 text-orange-400" />
+                    <Clock className="w-4 h-4 text-spotify-green" />
                     <div>
-                      <p className="text-xs text-slate-400">Time</p>
+                      <p className="text-xs text-muted-foreground">Time</p>
                       <p className="text-sm font-medium">{booking.startTime} - {booking.endTime}</p>
                     </div>
                   </motion.div>
 
                   <motion.div
-                    className="flex items-center gap-2 text-slate-300"
-                    whileHover={{ scale: 1.05, color: "#ffffff" }}
+                    className="flex items-center gap-2 text-muted-foreground"
+                    whileHover={{ scale: 1.05, color: "hsl(var(--foreground))" }}
                   >
-                    <Users className="w-4 h-4 text-purple-400" />
+                    <Users className="w-4 h-4 text-spotify-green" />
                     <div>
-                      <p className="text-xs text-slate-400">Attendees</p>
+                      <p className="text-xs text-muted-foreground">Attendees</p>
                       <p className="text-sm font-medium">{booking.attendees} people</p>
                     </div>
                   </motion.div>
 
                   <motion.div
-                    className="flex items-center gap-2 text-slate-300"
-                    whileHover={{ scale: 1.05, color: "#ffffff" }}
+                    className="flex items-center gap-2 text-muted-foreground"
+                    whileHover={{ scale: 1.05, color: "hsl(var(--foreground))" }}
                   >
-                    <Clock className="w-4 h-4 text-pink-400" />
+                    <Clock className="w-4 h-4 text-spotify-green" />
                     <div>
-                      <p className="text-xs text-slate-400">Duration</p>
+                      <p className="text-xs text-muted-foreground">Duration</p>
                       <p className="text-sm font-medium">{booking.duration}</p>
                     </div>
                   </motion.div>
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-2 pt-4 border-t border-white/10">
+                <div className="flex gap-2 pt-4 border-t border-border">
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Button
                       size="sm"
                       variant="outline"
-                      className="border-white/20 text-white hover:bg-blue-500/20"
+                      className="border-spotify-green/20 text-spotify-green hover:bg-spotify-green/10"
                     >
                       <Edit className="w-4 h-4 mr-2" />
                       Edit
@@ -217,7 +217,7 @@ const BookingsList = () => {
                     <Button
                       size="sm"
                       variant="outline"
-                      className="border-white/20 text-white hover:bg-red-500/20"
+                      className="border-destructive/20 text-destructive hover:bg-destructive/10"
                     >
                       <Trash2 className="w-4 h-4 mr-2" />
                       Cancel

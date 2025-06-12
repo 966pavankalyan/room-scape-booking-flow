@@ -61,10 +61,10 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
             onClick={(e) => e.stopPropagation()}
             className="w-full max-w-2xl max-h-[90vh] overflow-y-auto"
           >
-            <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-white/20 backdrop-blur-lg">
+            <Card className="bg-gradient-to-br from-spotify-black to-spotify-dark-gray border-spotify-green/20 backdrop-blur-lg">
               <CardHeader className="relative">
                 <motion.div
-                  className="absolute -top-2 -left-2 w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-20 blur-xl"
+                  className="absolute -top-2 -left-2 w-20 h-20 bg-gradient-to-r from-spotify-green to-spotify-green-light rounded-full opacity-20 blur-xl"
                   animate={{
                     scale: [1, 1.2, 1],
                     opacity: [0.2, 0.3, 0.2]
@@ -72,14 +72,14 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
                   transition={{ duration: 3, repeat: Infinity }}
                 />
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-2xl font-bold text-white">
+                  <CardTitle className="text-2xl font-bold text-spotify-white">
                     {selectedRoom ? `Book ${selectedRoom.name}` : "Quick Book"}
                   </CardTitle>
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={onClose}
-                    className="text-white hover:bg-white/10"
+                    className="text-spotify-white hover:bg-spotify-white/10"
                   >
                     <X className="w-5 h-5" />
                   </Button>
@@ -94,7 +94,7 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 }}
                   >
-                    <Label className="text-white mb-2 block">
+                    <Label className="text-spotify-white mb-2 block">
                       <MapPin className="w-4 h-4 inline mr-2" />
                       Meeting Room
                     </Label>
@@ -102,7 +102,7 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
                       value={formData.roomId} 
                       onValueChange={(value) => setFormData({...formData, roomId: value})}
                     >
-                      <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                      <SelectTrigger className="bg-spotify-white/10 border-spotify-green/20 text-spotify-white">
                         <SelectValue placeholder="Select a room" />
                       </SelectTrigger>
                       <SelectContent>
@@ -122,7 +122,7 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
                     >
-                      <Label className="text-white mb-2 block">
+                      <Label className="text-spotify-white mb-2 block">
                         <Calendar className="w-4 h-4 inline mr-2" />
                         Date
                       </Label>
@@ -130,7 +130,7 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
                         type="date"
                         value={formData.date}
                         onChange={(e) => setFormData({...formData, date: e.target.value})}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-spotify-white/10 border-spotify-green/20 text-spotify-white"
                         required
                       />
                     </motion.div>
@@ -140,7 +140,7 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 }}
                     >
-                      <Label className="text-white mb-2 block">
+                      <Label className="text-spotify-white mb-2 block">
                         <Clock className="w-4 h-4 inline mr-2" />
                         Start Time
                       </Label>
@@ -148,7 +148,7 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
                         type="time"
                         value={formData.startTime}
                         onChange={(e) => setFormData({...formData, startTime: e.target.value})}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-spotify-white/10 border-spotify-green/20 text-spotify-white"
                         required
                       />
                     </motion.div>
@@ -158,7 +158,7 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4 }}
                     >
-                      <Label className="text-white mb-2 block">
+                      <Label className="text-spotify-white mb-2 block">
                         <Clock className="w-4 h-4 inline mr-2" />
                         End Time
                       </Label>
@@ -166,7 +166,7 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
                         type="time"
                         value={formData.endTime}
                         onChange={(e) => setFormData({...formData, endTime: e.target.value})}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-spotify-white/10 border-spotify-green/20 text-spotify-white"
                         required
                       />
                     </motion.div>
@@ -179,11 +179,11 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.5 }}
                     >
-                      <Label className="text-white mb-2 block">Organizer Name</Label>
+                      <Label className="text-spotify-white mb-2 block">Organizer Name</Label>
                       <Input
                         value={formData.organizer}
                         onChange={(e) => setFormData({...formData, organizer: e.target.value})}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-spotify-white/10 border-spotify-green/20 text-spotify-white"
                         placeholder="Enter your name"
                         required
                       />
@@ -194,7 +194,7 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.6 }}
                     >
-                      <Label className="text-white mb-2 block">
+                      <Label className="text-spotify-white mb-2 block">
                         <Users className="w-4 h-4 inline mr-2" />
                         Expected Attendees
                       </Label>
@@ -202,7 +202,7 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
                         type="number"
                         value={formData.attendees}
                         onChange={(e) => setFormData({...formData, attendees: e.target.value})}
-                        className="bg-white/10 border-white/20 text-white"
+                        className="bg-spotify-white/10 border-spotify-green/20 text-spotify-white"
                         placeholder="Number of people"
                         min="1"
                         required
@@ -216,11 +216,11 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.7 }}
                   >
-                    <Label className="text-white mb-2 block">Meeting Purpose</Label>
+                    <Label className="text-spotify-white mb-2 block">Meeting Purpose</Label>
                     <Input
                       value={formData.purpose}
                       onChange={(e) => setFormData({...formData, purpose: e.target.value})}
-                      className="bg-white/10 border-white/20 text-white"
+                      className="bg-spotify-white/10 border-spotify-green/20 text-spotify-white"
                       placeholder="Brief description of the meeting"
                       required
                     />
@@ -237,7 +237,7 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
                       type="button"
                       variant="outline"
                       onClick={onClose}
-                      className="flex-1 border-white/20 text-white hover:bg-white/10"
+                      className="flex-1 border-spotify-green/20 text-spotify-white hover:bg-spotify-white/10"
                     >
                       Cancel
                     </Button>
@@ -248,7 +248,7 @@ const BookingModal = ({ isOpen, onClose, selectedRoom, rooms }) => {
                     >
                       <Button
                         type="submit"
-                        className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
+                        className="w-full bg-gradient-to-r from-spotify-green to-spotify-green-light hover:from-spotify-green-dark hover:to-spotify-green"
                       >
                         Confirm Booking
                       </Button>

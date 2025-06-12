@@ -24,114 +24,129 @@ const RoomCard = ({ room, onBook }) => {
     return icons[feature] || Wifi;
   };
 
-  const colorGradients = [
-    "gradient-1",
-    "gradient-2", 
-    "gradient-3",
-    "gradient-4",
-    "gradient-5",
-    "gradient-6"
-  ];
-
-  const roomGradient = colorGradients[room.id % colorGradients.length];
-
   return (
     <motion.div
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
       whileHover={{ 
-        y: -10, 
-        rotateX: 5, 
-        rotateY: 5,
-        scale: 1.02 
+        y: -8, 
+        scale: 1.02,
+        transition: { type: "spring", stiffness: 400, damping: 25 }
       }}
       whileTap={{ scale: 0.98 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="perspective-1000"
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="group"
     >
-      <Card className="bg-card/90 border-border backdrop-blur-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 border-2">
-        {/* Room Header with Colorful Gradient */}
-        <div className={`h-32 ${roomGradient} relative overflow-hidden`}>
+      <Card className="bg-card/90 border-border backdrop-blur-lg overflow-hidden hover:shadow-2xl transition-all duration-500 border-2 hover:border-primary/20">
+        {/* Clean Header */}
+        <motion.div 
+          className="h-24 gradient-primary relative overflow-hidden"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+        >
           <motion.div
-            className="absolute inset-0 bg-black/20 dark:bg-black/40"
+            className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10"
             animate={{
-              background: [
-                "radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%)",
-                "radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%)",
-                "radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%)",
-              ]
+              opacity: [0.3, 0.6, 0.3],
             }}
-            transition={{ duration: 4, repeat: Infinity }}
+            transition={{ duration: 3, repeat: Infinity }}
           />
+          
           <div className="absolute inset-0 flex items-center justify-center">
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="text-white text-6xl font-bold opacity-80 drop-shadow-lg"
+              className="text-primary-foreground text-4xl font-bold opacity-90"
             >
               {room.name.charAt(0)}
             </motion.div>
           </div>
-          <div className="absolute top-4 right-4">
-            <Badge 
-              className={`${
-                room.availability === "Available" 
-                  ? "bg-emerald-500/90 text-white hover:bg-emerald-600 border-emerald-400" 
-                  : "bg-red-500/90 text-white hover:bg-red-600 border-red-400"
-              } backdrop-blur-sm border font-medium`}
+          
+          <div className="absolute top-3 right-3">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.4 }}
             >
-              {room.availability}
-            </Badge>
+              <Badge 
+                className={`${
+                  room.availability === "Available" 
+                    ? "bg-success text-primary-foreground border-success/30" 
+                    : "bg-warning text-primary-foreground border-warning/30"
+                } backdrop-blur-sm border font-medium shadow-lg`}
+              >
+                {room.availability}
+              </Badge>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
-        <CardContent className="p-6">
-          <div className="mb-4">
+        <CardContent className="p-6 space-y-6">
+          {/* Room Info */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+          >
             <h3 className="text-xl font-bold text-foreground mb-2">{room.name}</h3>
-            <div className="flex items-center text-muted-foreground mb-4">
+            <div className="flex items-center text-muted-foreground">
               <Users className="w-4 h-4 mr-2 text-primary" />
-              <span className="font-medium">{room.capacity} people</span>
+              <span className="font-medium">{room.capacity} people capacity</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Features */}
-          <div className="mb-6">
-            <p className="text-muted-foreground text-sm mb-3 font-medium">Features</p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <p className="text-muted-foreground text-sm mb-3 font-medium">Available Features</p>
             <div className="flex flex-wrap gap-2">
               {room.features.map((feature, index) => {
                 const IconComponent = getFeatureIcon(feature);
-                const colorClass = `text-color-${(index % 6) + 1}`;
-                const borderColorClass = `border-color-${(index % 6) + 1}`;
                 return (
                   <motion.div
                     key={feature}
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1 }}
-                    className={`flex items-center gap-1 bg-card rounded-full px-3 py-1 text-xs font-medium border-2 ${colorClass} ${borderColorClass} hover:bg-muted/50 transition-colors`}
+                    transition={{ delay: 0.6 + index * 0.1 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="flex items-center gap-2 bg-secondary/50 rounded-full px-3 py-2 text-xs font-medium border border-border hover:bg-secondary/70 transition-all duration-200"
                   >
-                    <IconComponent className="w-3 h-3" />
-                    {feature}
+                    <IconComponent className="w-3 h-3 text-primary" />
+                    <span className="text-foreground">{feature}</span>
                   </motion.div>
                 );
               })}
             </div>
-          </div>
+          </motion.div>
 
           {/* Action Button */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             <Button
               onClick={() => onBook(room)}
               disabled={room.availability !== "Available"}
-              className={`w-full font-semibold ${
+              className={`w-full font-semibold transition-all duration-300 ${
                 room.availability === "Available"
-                  ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg"
+                  ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl"
                   : "bg-muted cursor-not-allowed text-muted-foreground"
-              } transition-all duration-300`}
+              }`}
             >
-              {room.availability === "Available" ? "Book This Room" : "Currently Occupied"}
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+              >
+                {room.availability === "Available" ? "Book This Room" : "Currently Occupied"}
+              </motion.span>
             </Button>
           </motion.div>
         </CardContent>

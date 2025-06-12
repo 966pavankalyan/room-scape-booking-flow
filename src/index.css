@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+/* Clean and professional design system */
 
 @layer base {
   :root {
@@ -16,41 +16,37 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 142 76% 36%;
-    --primary-foreground: 355.7 100% 97.3%;
+    --primary: 224 71% 4%;
+    --primary-foreground: 210 20% 98%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 9% 46%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
 
-    --accent: 142 76% 36%;
-    --accent-foreground: 222.2 84% 4.9%;
+    --accent: 217 32% 17%;
+    --accent-foreground: 210 20% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 142 76% 36%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71% 4%;
 
     --radius: 0.75rem;
 
-    /* Colorful theme variables for light mode */
-    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-    --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-    --gradient-6: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    /* Clean, professional color palette */
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    --info: 199 89% 48%;
+    --neutral: 220 9% 46%;
     
-    --color-1: 262 83% 58%;
-    --color-2: 340 82% 52%;
-    --color-3: 200 98% 39%;
-    --color-4: 158 64% 52%;
-    --color-5: 320 85% 41%;
-    --color-6: 142 76% 36%;
+    /* Subtle gradients for visual interest */
+    --gradient-primary: linear-gradient(135deg, hsl(224, 71%, 4%) 0%, hsl(217, 32%, 17%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(142, 76%, 36%) 0%, hsl(142, 76%, 28%) 100%);
+    --gradient-card: linear-gradient(135deg, hsla(0, 0%, 100%, 0.9) 0%, hsla(220, 14%, 96%, 0.9) 100%);
   }
 
   .dark {
@@ -63,7 +59,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 142 76% 36%;
+    --primary: 210 40% 98%;
     --primary-foreground: 222.2 84% 4.9%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -72,7 +68,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 142 76% 36%;
+    --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -80,22 +76,18 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 142 76% 36%;
+    --ring: 212.7 26.8% 83.9%;
 
-    /* Colorful theme variables for dark mode */
-    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-    --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-    --gradient-6: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    /* Dark mode colors */
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    --info: 199 89% 48%;
+    --neutral: 215 20.2% 65.1%;
     
-    --color-1: 262 83% 68%;
-    --color-2: 340 82% 62%;
-    --color-3: 200 98% 49%;
-    --color-4: 158 64% 62%;
-    --color-5: 320 85% 51%;
-    --color-6: 142 76% 46%;
+    /* Dark mode gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(210, 40%, 98%) 0%, hsl(215, 20%, 65%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(142, 76%, 36%) 0%, hsl(142, 76%, 28%) 100%);
+    --gradient-card: linear-gradient(135deg, hsla(222, 84%, 5%, 0.9) 0%, hsla(217, 32%, 17%, 0.9) 100%);
   }
 }
 
@@ -105,43 +97,67 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-/* Colorful utility classes */
+/* Professional utility classes */
 @layer utilities {
-  .gradient-1 { background: var(--gradient-1); }
-  .gradient-2 { background: var(--gradient-2); }
-  .gradient-3 { background: var(--gradient-3); }
-  .gradient-4 { background: var(--gradient-4); }
-  .gradient-5 { background: var(--gradient-5); }
-  .gradient-6 { background: var(--gradient-6); }
+  .gradient-primary { background: var(--gradient-primary); }
+  .gradient-success { background: var(--gradient-success); }
+  .gradient-card { background: var(--gradient-card); }
   
-  .text-color-1 { color: hsl(var(--color-1)); }
-  .text-color-2 { color: hsl(var(--color-2)); }
-  .text-color-3 { color: hsl(var(--color-3)); }
-  .text-color-4 { color: hsl(var(--color-4)); }
-  .text-color-5 { color: hsl(var(--color-5)); }
-  .text-color-6 { color: hsl(var(--color-6)); }
+  .text-success { color: hsl(var(--success)); }
+  .text-warning { color: hsl(var(--warning)); }
+  .text-info { color: hsl(var(--info)); }
+  .text-neutral { color: hsl(var(--neutral)); }
   
-  .border-color-1 { border-color: hsl(var(--color-1)); }
-  .border-color-2 { border-color: hsl(var(--color-2)); }
-  .border-color-3 { border-color: hsl(var(--color-3)); }
-  .border-color-4 { border-color: hsl(var(--color-4)); }
-  .border-color-5 { border-color: hsl(var(--color-5)); }
-  .border-color-6 { border-color: hsl(var(--color-6)); }
+  .bg-success { background-color: hsl(var(--success)); }
+  .bg-warning { background-color: hsl(var(--warning)); }
+  .bg-info { background-color: hsl(var(--info)); }
+  .bg-neutral { background-color: hsl(var(--neutral)); }
   
-  .bg-color-1 { background-color: hsl(var(--color-1)); }
-  .bg-color-2 { background-color: hsl(var(--color-2)); }
-  .bg-color-3 { background-color: hsl(var(--color-3)); }
-  .bg-color-4 { background-color: hsl(var(--color-4)); }
-  .bg-color-5 { background-color: hsl(var(--color-5)); }
-  .bg-color-6 { background-color: hsl(var(--color-6)); }
+  .border-success { border-color: hsl(var(--success)); }
+  .border-warning { border-color: hsl(var(--warning)); }
+  .border-info { border-color: hsl(var(--info)); }
+  .border-neutral { border-color: hsl(var(--neutral)); }
+
+  /* Enhanced animations */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
   
-  .hover\\:bg-color-1:hover { background-color: hsl(var(--color-1)); }
-  .hover\\:bg-color-2:hover { background-color: hsl(var(--color-2)); }
-  .hover\\:bg-color-3:hover { background-color: hsl(var(--color-3)); }
-  .hover\\:bg-color-4:hover { background-color: hsl(var(--color-4)); }
-  .hover\\:bg-color-5:hover { background-color: hsl(var(--color-5)); }
-  .hover\\:bg-color-6:hover { background-color: hsl(var(--color-6)); }
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out;
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn 0.7s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  @keyframes bounceIn {
+    0% { opacity: 0; transform: scale(0.3); }
+    50% { opacity: 1; transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
 }

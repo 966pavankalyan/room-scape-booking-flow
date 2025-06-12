@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import RoomCard from "@/components/RoomCard";
 import BookingModal from "@/components/BookingModal";
 import BookingsList from "@/components/BookingsList";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Index = () => {
   const [selectedRoom, setSelectedRoom] = useState(null);
@@ -21,7 +22,6 @@ const Index = () => {
       capacity: 12,
       features: ["Projector", "Whiteboard", "Video Conferencing"],
       availability: "Available",
-      color: "from-spotify-green to-spotify-green-dark"
     },
     {
       id: 2,
@@ -29,7 +29,6 @@ const Index = () => {
       capacity: 8,
       features: ["Smart TV", "Wireless Presentation", "Coffee Machine"],
       availability: "Occupied",
-      color: "from-spotify-green to-spotify-green-dark"
     },
     {
       id: 3,
@@ -37,7 +36,6 @@ const Index = () => {
       capacity: 6,
       features: ["Premium Audio", "Leather Seating", "Private Entrance"],
       availability: "Available",
-      color: "from-spotify-green to-spotify-green-dark"
     },
     {
       id: 4,
@@ -45,7 +43,6 @@ const Index = () => {
       capacity: 4,
       features: ["Soundproof", "Standing Desk", "Natural Light"],
       availability: "Available",
-      color: "from-spotify-green to-spotify-green-dark"
     }
   ];
 
@@ -54,14 +51,21 @@ const Index = () => {
     setIsBookingModalOpen(true);
   };
 
+  const statsData = [
+    { label: "Total Rooms", value: "4", icon: MapPin, colorClass: "text-color-1", bgClass: "bg-color-1/10" },
+    { label: "Available Now", value: "3", icon: Clock, colorClass: "text-color-2", bgClass: "bg-color-2/10" },
+    { label: "Total Capacity", value: "30", icon: Users, colorClass: "text-color-3", bgClass: "bg-color-3/10" },
+    { label: "Today's Bookings", value: "8", icon: Calendar, colorClass: "text-color-4", bgClass: "bg-color-4/10" }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-muted/50">
+    <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-muted/40">
       {/* Header */}
       <motion.header 
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative overflow-hidden bg-card/80 backdrop-blur-lg border-b border-border"
+        className="relative overflow-hidden bg-card/90 backdrop-blur-lg border-b border-border shadow-lg"
       >
         <div className="relative container mx-auto px-6 py-8">
           <div className="flex items-center justify-between">
@@ -70,21 +74,22 @@ const Index = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              <h1 className="text-4xl font-bold text-foreground">
+              <h1 className="text-4xl font-bold text-foreground bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 RoomSync Pro
               </h1>
-              <p className="text-muted-foreground mt-2">Smart Meeting Room Booking System</p>
+              <p className="text-muted-foreground mt-2 font-medium">Smart Meeting Room Booking System</p>
             </motion.div>
             <motion.div
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="flex gap-4"
+              className="flex gap-4 items-center"
             >
+              <ThemeToggle />
               <Button
                 onClick={() => setActiveTab("rooms")}
                 variant={activeTab === "rooms" ? "default" : "outline"}
-                className={activeTab === "rooms" ? "bg-spotify-green text-white hover:bg-spotify-green-dark" : ""}
+                className={`${activeTab === "rooms" ? "bg-primary text-primary-foreground" : "hover:bg-muted"} font-medium`}
               >
                 <MapPin className="w-4 h-4 mr-2" />
                 Rooms
@@ -92,7 +97,7 @@ const Index = () => {
               <Button
                 onClick={() => setActiveTab("bookings")}
                 variant={activeTab === "bookings" ? "default" : "outline"}
-                className={activeTab === "bookings" ? "bg-spotify-green text-white hover:bg-spotify-green-dark" : ""}
+                className={`${activeTab === "bookings" ? "bg-primary text-primary-foreground" : "hover:bg-muted"} font-medium`}
               >
                 <Calendar className="w-4 h-4 mr-2" />
                 Bookings
@@ -112,27 +117,22 @@ const Index = () => {
           >
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-              {[
-                { label: "Total Rooms", value: "4", icon: MapPin, color: "text-spotify-green" },
-                { label: "Available Now", value: "3", icon: Clock, color: "text-spotify-green" },
-                { label: "Total Capacity", value: "30", icon: Users, color: "text-spotify-green" },
-                { label: "Today's Bookings", value: "8", icon: Calendar, color: "text-spotify-green" }
-              ].map((stat, index) => (
+              {statsData.map((stat, index) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                 >
-                  <Card className="bg-card/80 backdrop-blur-lg border-border hover:shadow-lg transition-all duration-300 group">
+                  <Card className="bg-card/90 backdrop-blur-lg border-border hover:shadow-xl transition-all duration-300 group border-2">
                     <CardContent className="p-6">
                       <div className="flex items-center justify-between">
                         <div>
-                          <p className="text-muted-foreground text-sm">{stat.label}</p>
+                          <p className="text-muted-foreground text-sm font-medium">{stat.label}</p>
                           <p className="text-3xl font-bold text-foreground mt-1">{stat.value}</p>
                         </div>
-                        <div className={`p-3 rounded-xl bg-spotify-green/10 group-hover:scale-110 transition-transform duration-300`}>
-                          <stat.icon className={`w-6 h-6 ${stat.color}`} />
+                        <div className={`p-3 rounded-xl ${stat.bgClass} group-hover:scale-110 transition-transform duration-300`}>
+                          <stat.icon className={`w-6 h-6 ${stat.colorClass}`} />
                         </div>
                       </div>
                     </CardContent>
@@ -151,7 +151,7 @@ const Index = () => {
                 <h2 className="text-2xl font-bold text-foreground">Available Meeting Rooms</h2>
                 <Button
                   onClick={() => setIsBookingModalOpen(true)}
-                  className="bg-spotify-green hover:bg-spotify-green-dark text-white"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg"
                 >
                   <Plus className="w-4 h-4 mr-2" />
                   Quick Book

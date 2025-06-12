@@ -24,6 +24,17 @@ const RoomCard = ({ room, onBook }) => {
     return icons[feature] || Wifi;
   };
 
+  const colorGradients = [
+    "gradient-1",
+    "gradient-2", 
+    "gradient-3",
+    "gradient-4",
+    "gradient-5",
+    "gradient-6"
+  ];
+
+  const roomGradient = colorGradients[room.id % colorGradients.length];
+
   return (
     <motion.div
       whileHover={{ 
@@ -36,16 +47,16 @@ const RoomCard = ({ room, onBook }) => {
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className="perspective-1000"
     >
-      <Card className="bg-card/80 border-border backdrop-blur-lg overflow-hidden group hover:shadow-xl transition-all duration-500">
-        {/* Room Header */}
-        <div className="h-32 bg-gradient-to-r from-spotify-black to-spotify-dark-gray relative overflow-hidden">
+      <Card className="bg-card/90 border-border backdrop-blur-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 border-2">
+        {/* Room Header with Colorful Gradient */}
+        <div className={`h-32 ${roomGradient} relative overflow-hidden`}>
           <motion.div
-            className="absolute inset-0 bg-spotify-green/5"
+            className="absolute inset-0 bg-black/20 dark:bg-black/40"
             animate={{
               background: [
-                "radial-gradient(circle at 20% 50%, rgba(29, 185, 84, 0.05) 0%, transparent 50%)",
-                "radial-gradient(circle at 80% 50%, rgba(29, 185, 84, 0.05) 0%, transparent 50%)",
-                "radial-gradient(circle at 20% 50%, rgba(29, 185, 84, 0.05) 0%, transparent 50%)",
+                "radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%)",
+                "radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%)",
+                "radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%)",
               ]
             }}
             transition={{ duration: 4, repeat: Infinity }}
@@ -55,7 +66,7 @@ const RoomCard = ({ room, onBook }) => {
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="text-spotify-green text-6xl font-bold opacity-20"
+              className="text-white text-6xl font-bold opacity-80 drop-shadow-lg"
             >
               {room.name.charAt(0)}
             </motion.div>
@@ -64,9 +75,9 @@ const RoomCard = ({ room, onBook }) => {
             <Badge 
               className={`${
                 room.availability === "Available" 
-                  ? "bg-spotify-green text-white hover:bg-spotify-green-dark" 
-                  : "bg-destructive text-destructive-foreground hover:bg-destructive/80"
-              }`}
+                  ? "bg-emerald-500/90 text-white hover:bg-emerald-600 border-emerald-400" 
+                  : "bg-red-500/90 text-white hover:bg-red-600 border-red-400"
+              } backdrop-blur-sm border font-medium`}
             >
               {room.availability}
             </Badge>
@@ -77,24 +88,26 @@ const RoomCard = ({ room, onBook }) => {
           <div className="mb-4">
             <h3 className="text-xl font-bold text-foreground mb-2">{room.name}</h3>
             <div className="flex items-center text-muted-foreground mb-4">
-              <Users className="w-4 h-4 mr-2" />
-              <span>{room.capacity} people</span>
+              <Users className="w-4 h-4 mr-2 text-primary" />
+              <span className="font-medium">{room.capacity} people</span>
             </div>
           </div>
 
           {/* Features */}
           <div className="mb-6">
-            <p className="text-muted-foreground text-sm mb-3">Features</p>
+            <p className="text-muted-foreground text-sm mb-3 font-medium">Features</p>
             <div className="flex flex-wrap gap-2">
               {room.features.map((feature, index) => {
                 const IconComponent = getFeatureIcon(feature);
+                const colorClass = `text-color-${(index % 6) + 1}`;
+                const borderColorClass = `border-color-${(index % 6) + 1}`;
                 return (
                   <motion.div
                     key={feature}
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-center gap-1 bg-spotify-green/10 rounded-full px-3 py-1 text-xs text-spotify-green border border-spotify-green/20"
+                    className={`flex items-center gap-1 bg-card rounded-full px-3 py-1 text-xs font-medium border-2 ${colorClass} ${borderColorClass} hover:bg-muted/50 transition-colors`}
                   >
                     <IconComponent className="w-3 h-3" />
                     {feature}
@@ -112,9 +125,9 @@ const RoomCard = ({ room, onBook }) => {
             <Button
               onClick={() => onBook(room)}
               disabled={room.availability !== "Available"}
-              className={`w-full ${
+              className={`w-full font-semibold ${
                 room.availability === "Available"
-                  ? "bg-spotify-green hover:bg-spotify-green-dark text-white"
+                  ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg"
                   : "bg-muted cursor-not-allowed text-muted-foreground"
               } transition-all duration-300`}
             >

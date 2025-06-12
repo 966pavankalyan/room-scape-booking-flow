@@ -8,92 +8,94 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 7%;
+    --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 7%;
+    --card-foreground: 222.2 84% 4.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 7%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 141 73% 42%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 355.7 100% 97.3%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 7%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 141 73% 42%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 142 76% 36%;
+    --accent-foreground: 222.2 84% 4.9%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 141 73% 42%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142 76% 36%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 20%;
-    --sidebar-primary: 141 73% 42%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 141 73% 42%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 141 73% 42%;
-
-    /* Spotify specific colors */
-    --spotify-green: 141 73% 42%;
-    --spotify-green-dark: 141 73% 35%;
-    --spotify-green-light: 141 73% 50%;
-    --spotify-black: 0 0% 7%;
-    --spotify-dark-gray: 0 0% 13%;
-    --spotify-gray: 0 0% 18%;
-    --spotify-light-gray: 0 0% 64%;
-    --spotify-white: 0 0% 100%;
+    /* Colorful theme variables for light mode */
+    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    --gradient-6: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    
+    --color-1: 262 83% 58%;
+    --color-2: 340 82% 52%;
+    --color-3: 200 98% 39%;
+    --color-4: 158 64% 52%;
+    --color-5: 320 85% 41%;
+    --color-6: 142 76% 36%;
   }
 
   .dark {
-    --background: 0 0% 7%;
-    --foreground: 0 0% 100%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 13%;
-    --card-foreground: 0 0% 100%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 141 73% 42%;
-    --primary-foreground: 0 0% 7%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 222.2 84% 4.9%;
 
-    --secondary: 0 0% 18%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 0 0% 18%;
-    --muted-foreground: 0 0% 64%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 141 73% 42%;
-    --accent-foreground: 0 0% 7%;
+    --accent: 142 76% 36%;
+    --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
-    --ring: 141 73% 42%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 142 76% 36%;
 
-    --sidebar-background: 0 0% 7%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 141 73% 42%;
-    --sidebar-primary-foreground: 0 0% 7%;
-    --sidebar-accent: 0 0% 18%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 141 73% 42%;
+    /* Colorful theme variables for dark mode */
+    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    --gradient-6: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    
+    --color-1: 262 83% 68%;
+    --color-2: 340 82% 62%;
+    --color-3: 200 98% 49%;
+    --color-4: 158 64% 62%;
+    --color-5: 320 85% 51%;
+    --color-6: 142 76% 46%;
   }
 }
 
@@ -101,59 +103,45 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
   }
 }
 
-/* Spotify-inspired utility classes */
+/* Colorful utility classes */
 @layer utilities {
-  .bg-spotify-green {
-    background-color: hsl(var(--spotify-green));
-  }
+  .gradient-1 { background: var(--gradient-1); }
+  .gradient-2 { background: var(--gradient-2); }
+  .gradient-3 { background: var(--gradient-3); }
+  .gradient-4 { background: var(--gradient-4); }
+  .gradient-5 { background: var(--gradient-5); }
+  .gradient-6 { background: var(--gradient-6); }
   
-  .bg-spotify-green-dark {
-    background-color: hsl(var(--spotify-green-dark));
-  }
+  .text-color-1 { color: hsl(var(--color-1)); }
+  .text-color-2 { color: hsl(var(--color-2)); }
+  .text-color-3 { color: hsl(var(--color-3)); }
+  .text-color-4 { color: hsl(var(--color-4)); }
+  .text-color-5 { color: hsl(var(--color-5)); }
+  .text-color-6 { color: hsl(var(--color-6)); }
   
-  .bg-spotify-green-light {
-    background-color: hsl(var(--spotify-green-light));
-  }
+  .border-color-1 { border-color: hsl(var(--color-1)); }
+  .border-color-2 { border-color: hsl(var(--color-2)); }
+  .border-color-3 { border-color: hsl(var(--color-3)); }
+  .border-color-4 { border-color: hsl(var(--color-4)); }
+  .border-color-5 { border-color: hsl(var(--color-5)); }
+  .border-color-6 { border-color: hsl(var(--color-6)); }
   
-  .bg-spotify-black {
-    background-color: hsl(var(--spotify-black));
-  }
+  .bg-color-1 { background-color: hsl(var(--color-1)); }
+  .bg-color-2 { background-color: hsl(var(--color-2)); }
+  .bg-color-3 { background-color: hsl(var(--color-3)); }
+  .bg-color-4 { background-color: hsl(var(--color-4)); }
+  .bg-color-5 { background-color: hsl(var(--color-5)); }
+  .bg-color-6 { background-color: hsl(var(--color-6)); }
   
-  .bg-spotify-dark-gray {
-    background-color: hsl(var(--spotify-dark-gray));
-  }
-  
-  .bg-spotify-gray {
-    background-color: hsl(var(--spotify-gray));
-  }
-  
-  .text-spotify-green {
-    color: hsl(var(--spotify-green));
-  }
-  
-  .text-spotify-white {
-    color: hsl(var(--spotify-white));
-  }
-  
-  .text-spotify-light-gray {
-    color: hsl(var(--spotify-light-gray));
-  }
-  
-  .border-spotify-green {
-    border-color: hsl(var(--spotify-green));
-  }
-  
-  .hover\\:bg-spotify-green-dark:hover {
-    background-color: hsl(var(--spotify-green-dark));
-  }
-  
-  .hover\\:bg-spotify-green-light:hover {
-    background-color: hsl(var(--spotify-green-light));
-  }
+  .hover\\:bg-color-1:hover { background-color: hsl(var(--color-1)); }
+  .hover\\:bg-color-2:hover { background-color: hsl(var(--color-2)); }
+  .hover\\:bg-color-3:hover { background-color: hsl(var(--color-3)); }
+  .hover\\:bg-color-4:hover { background-color: hsl(var(--color-4)); }
+  .hover\\:bg-color-5:hover { background-color: hsl(var(--color-5)); }
+  .hover\\:bg-color-6:hover { background-color: hsl(var(--color-6)); }
 }
